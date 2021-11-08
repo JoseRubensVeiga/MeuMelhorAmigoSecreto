@@ -10,6 +10,7 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
+      - run: yarn build --prod
       - uses: actions/checkout@v2
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -17,4 +18,3 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_MEU_MELHOR_AMIGO_SECRETO }}"
           channelId: live
           projectId: meu-melhor-amigo-secreto
-      - run: yarn build --prod
