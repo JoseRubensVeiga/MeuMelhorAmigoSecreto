@@ -1,0 +1,20 @@
+<div class="select-names-container">
+  <div>
+    <h1 class="main-title">Nomes</h1>
+
+    <div class="name-container new">
+      <input type="text" [(ngModel)]="inputValue" />
+    </div>
+
+    <div class="names-container">
+      <div class="name-container" *ngFor="let name of names">
+        {{ name }}
+        <span>+</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="add-button" (click)="onAddClick()">+</div>
+  <div class="finalize-button" (click)="onFinalizeClick()">✓</div>
+  <div class="light"></div>
+</div>
