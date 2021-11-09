@@ -11,6 +11,8 @@ export class SelectNamesComponent implements OnInit {
 
   secrets: string[] = [];
 
+  copied: boolean[] = [];
+
   inputValue: string = '';
 
   creating = true;
@@ -48,6 +50,8 @@ export class SelectNamesComponent implements OnInit {
     this.creating = false;
 
     this.secrets = this.generateSecrets();
+
+    this.copied = this.secrets.map(() => false);
   }
 
   excluirNome(index: number): void {
@@ -63,13 +67,19 @@ export class SelectNamesComponent implements OnInit {
   }
 
   sendLink(index: number): void {
-    const name = this.secrets[index];
+    const friend = this.secrets[index];
+    const hashedFriend = btoa(friend);
 
-    const hashed = btoa(name);
+    const name = this.names[index];
+    const hashedName = btoa(name);
+
     const baseURL = window.location.href;
-    const url = `${baseURL}/result?n=${hashed}`;
-    navigator.clipboard.writeText(url).then(() => {
-      alert('Texto copiado com sucesso!');
+    const url = `${baseURL}/result?n=${hashedName}&f=${hashedFriend}`;
+
+    const letter = `${name}, clique no link a seguir para saber quem é o seu amigo secreto! ${url}`;
+
+    navigator.clipboard.writeText(letter).then(() => {
+      this.copied[index] = true;
     });
   }
 
@@ -89,7 +99,6 @@ export class SelectNamesComponent implements OnInit {
 
   private shuffleArray(arr: any[]) {
     const newArr: any[] = [...arr];
-    // Loop em todos os elementos
     for (let i = newArr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [newArr[i], newArr[j]] = [newArr[j], newArr[i]];

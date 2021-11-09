@@ -21,8 +21,14 @@
         <span class="remove-name" (click)="excluirNome(i)" *ngIf="creating"
           >+</span
         >
-        <button class="send-button" *ngIf="!creating" (click)="sendLink(i)">
-          Enviar
+        <button
+          class="send-button"
+          [class.copied]="copied[i]"
+          *ngIf="!creating"
+          (click)="sendLink(i)"
+        >
+          <span *ngIf="!copied[i]">Copiar Bilhete</span>
+          <span *ngIf="copied[i]">Bilhete Copiado</span>
         </button>
       </div>
     </div>
