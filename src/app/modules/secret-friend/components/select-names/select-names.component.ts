@@ -7,7 +7,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class SelectNamesComponent implements OnInit {
   @ViewChild('input') inputRef?: ElementRef;
-  names: string[] = ['Brenda', 'Binho', 'Rubens', 'Vitória'];
+  names: string[] = [];
 
   secrets: string[] = [];
 
