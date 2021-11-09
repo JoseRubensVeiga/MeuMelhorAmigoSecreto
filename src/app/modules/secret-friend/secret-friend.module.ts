@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { SecretFriendRoutingModule } from './secret-friend-routing.module';
 import { SelectNamesComponent } from './components/select-names';
-import { LinksComponent } from './components/links';
 import { FormsModule } from '@angular/forms';
+import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
-  declarations: [SelectNamesComponent, LinksComponent],
+  declarations: [SelectNamesComponent, ResultComponent],
   imports: [CommonModule, FormsModule, SecretFriendRoutingModule],
 })
 export class SecretFriendModule {}
