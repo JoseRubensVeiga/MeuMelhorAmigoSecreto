@@ -28,6 +28,11 @@ export class SelectNamesComponent implements OnInit {
     if (!this.inputValue) {
       return;
     }
+
+    if (this.names.includes(this.inputValue)) {
+      return;
+    }
+
     this.names.push(this.inputValue);
 
     this.inputValue = '';
